@@ -1,7 +1,7 @@
 ---
-title: Fantasy Editor - A Flowchart Editor Based On G6
+title: VF Editor - A Flowchart Editor Based On G6
 hero:
-  title: WF Editor
+  title: VF Editor
   desc: A Flowchart Editor Based On G6
   actions:
     - text: Getting Started

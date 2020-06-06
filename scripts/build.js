@@ -8,6 +8,7 @@ const resolve = require('@rollup/plugin-node-resolve');
 const commonjs = require('@rollup/plugin-commonjs');
 const typescript = require('rollup-plugin-typescript2');
 const babel = require('rollup-plugin-babel');
+const { terser } = require('rollup-plugin-terser');
 const { exec } = require('child_process');
 const { dependencies = {}, peerDependencies = {} } = require('../package.json');
 const svgr = require('@svgr/rollup').default;
@@ -58,10 +59,56 @@ const processLess = function(context, payload) {
 
 async function build() {
     // Clean
+    rimraf.sync('dist');
     rimraf.sync('lib');
     rimraf.sync('es');
 
     signale.success('Clean success');
+
+    // Build umd
+    try {
+        const umdBundle = await rollup.rollup({
+            input: 'src/index.tsx',
+            plugins: [
+                resolve({
+                    browser: true,
+                }),
+                commonjs(),
+                typescript({
+                    tsconfigOverride: {
+                        compilerOptions: {
+                            declaration: false,
+                        },
+                    },
+                }),
+                postcss({
+                    extract: true,
+                    minimize: true,
+                    process: processLess,
+                }),
+                babel({
+                    extensions: ['.js', '.jsx', '.ts', '.tsx'],
+                }),
+                terser(),
+            ],
+            external: makeExternalPredicate([...Object.keys(peerDependencies)]),
+        });
+
+        await umdBundle.write({
+            name: 'GGEditor',
+            file: 'dist/index.js',
+            format: 'umd',
+            globals: {
+                react: 'React',
+                'react-dom': 'ReactDOM',
+            },
+            exports: 'named',
+        });
+
+        signale.success('Build umd success');
+    } catch (error) {
+        signale.error(error);
+    }
 
     // Build cjs
     try {

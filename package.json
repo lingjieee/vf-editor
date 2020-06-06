@@ -1,8 +1,9 @@
 {
-  "name": "wf-editor",
-  "version": "0.0.1",
+  "name": "vf-editor",
+  "version": "0.1.0",
   "description": "A Flowchart Editor Based On G6",
   "main": "lib/index.js",
+  "unpkg": "dist/index.js",
   "module": "es/index.js",
   "typings": "lib/index.d.ts",
   "keywords": [
@@ -29,11 +30,11 @@
     "start": "npm run docs:start",
     "build": "node ./scripts/build.js",
     "docs:start": "dumi dev",
-    "docs:build": "dumi build &&  cp CNAME dist/",
+    "docs:build": "dumi build &&  cp CNAME site/",
     "lint": "eslint --cache --ext .ts,.tsx ./src",
     "lint:fix": "npm run lint -- --fix",
     "pretty-quick": "pretty-quick",
-    "deploy": "gh-pages -d dist -r git@github.com:lingjieee/wf-editor.git"
+    "deploy": "gh-pages -d site -r git@github.com:lingjieee/wf-editor.git"
   },
   "sideEffects": [
     "dist/*",

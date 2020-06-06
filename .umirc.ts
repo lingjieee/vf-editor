@@ -20,4 +20,5 @@ export default defineConfig({
     styles: [],
     scripts: [],
     externals: {},
+    outputPath: 'site'
 });

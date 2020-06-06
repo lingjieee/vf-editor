@@ -2,6 +2,7 @@
 
 /node_modules
 
+/site
 /dist
 /lib
 /es

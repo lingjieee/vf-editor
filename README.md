@@ -1,14 +1,14 @@
 English | [简体中文](README.zh-CN.md)
 
-<h1 align="center">WF Editor</h1>
+<h1 align="center">VF Editor</h1>
 
 <div align="center">
 
 A Flowchart Editor Based On [G6](https://github.com/antvis/g6) and [React](https://github.com/facebook/react).
 
-[![GitHub](https://img.shields.io/github/license/lingjieee/wf-editor)](LICENSE)
-[![npm](https://img.shields.io/npm/v/wf-editor)](https://www.npmjs.com/package/wf-editor)
-[![npm](https://img.shields.io/npm/dm/wf-editor)](https://www.npmjs.com/package/wf-editor)
+[![GitHub](https://img.shields.io/github/license/lingjieee/vf-editor)](LICENSE)
+[![npm](https://img.shields.io/npm/v/vf-editor)](https://www.npmjs.com/package/vf-editor)
+[![npm](https://img.shields.io/npm/dm/vf-editor)](https://www.npmjs.com/package/vf-editor)
 
 </div>
 
@@ -17,17 +17,17 @@ A Flowchart Editor Based On [G6](https://github.com/antvis/g6) and [React](https
 ### npm
 
 ```bash | pure
-npm install wf-editor --save
+npm install vf-editor --save
 ```
 
 ## Examples
 
 ```bash | pure
 # Clone the repository
-$ git clone https://github.com/lingjieee/wf-editor.git
+$ git clone https://github.com/lingjieee/vf-editor.git
 
 # Change directory
-$ cd wf-editor
+$ cd vf-editor
 
 # Install dependencies
 $ yarn install

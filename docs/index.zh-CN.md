@@ -1,7 +1,7 @@
 ---
-title: WF Editor - 基于G6和React的流程图编辑器
+title: VF Editor - 基于G6和React的流程图编辑器
 hero:
-  title: WF Editor
+  title: VF Editor
   desc: 基于G6和React的富文本编辑器
   actions:
     - text: 快速上手

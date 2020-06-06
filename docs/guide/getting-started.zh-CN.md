@@ -12,17 +12,17 @@ nav:
 ### npm
 
 ```bash | pure
-npm install wf-editor --save
+npm install vf-editor --save
 ```
 
 ## 示例
 
 ```bash | pure
 # 克隆仓库
-$ git clone https://github.com/lingjieee/wf-editor.git
+$ git clone https://github.com/lingjieee/vf-editor.git
 
 # 切换目录
-$ cd wf-editor
+$ cd vf-editor
 
 # 安装依赖
 $ yarn install
