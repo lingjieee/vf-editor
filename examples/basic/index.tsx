@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import Editor, {Flow, EditableLabel, ItemPopover} from 'wf-editor';
+import Editor, {Flow, EditableLabel, ItemPopover} from 'vf-editor';
 import styles from './index.less';
 
 interface OwnProps {}
