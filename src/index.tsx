@@ -1,7 +1,8 @@
-import Editor from '@/components/editor';
-import Flow from '@/components/flow';
 import G6 from '@antv/g6';
 import '@/shape';
+
+import Editor from '@/components/editor';
+import Flow from '@/components/flow';
 import ItemPanel, {Item} from './components/item-panel';
 import EditableLabel from '@/plugins/editable-label';
 import ItemPopover from '@/plugins/item-popover';

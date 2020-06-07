@@ -4,7 +4,6 @@ import {CommandEvent, Graph} from "@/common/interface";
 import pick from 'lodash/pick';
 import CommandManager from "@/common/command-manager";
 import {EditorEvent, GraphCommonEvent, RendererType} from "@/common/constants";
-import isArray from 'lodash/isArray';
 import isHotkey from 'is-hotkey';
 
 interface EditorProps {

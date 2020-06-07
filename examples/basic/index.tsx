@@ -39,11 +39,10 @@ const Basic: FunctionComponent<Props> = (props) => {
       <Editor>
         <Flow data={data} className={styles.graph}/>
         <EditableLabel/>
-        <ItemPopover title={()=>"你好"} content={(item)=>{
-          console.log(item)
+        <ItemPopover title={()=>"title"} content={(item)=>{
           return(
             <div>
-              zzzz
+              content
             </div>
           )
         }}/>

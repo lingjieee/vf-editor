@@ -18,7 +18,6 @@ const copyCommand: BaseCommand = {
     const selectedNodes = this.getSelectedNodes(graph);
 
     global.clipboard.models = cloneDeep(selectedNodes.map(node => node.getModel() as NodeModel));
-    console.log(global.clipboard.models)
   },
 
   shortcuts: ['mod+c'],

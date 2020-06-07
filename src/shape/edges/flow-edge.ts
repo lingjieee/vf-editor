@@ -8,15 +8,16 @@ const EDGE_LABEL_WRAPPER_CLASS_NAME = 'edge-label-wrapper-label';
 const flowEdge: CustomEdge = {
   options: {
     style: {
-      stroke: '#ccc1d8',
-      lineWidth: 2,
+      stroke: '#e5e5e5',
+      lineWidth: 1,
+      lineAppendWidth: 16,
       shadowColor: null,
       shadowBlur: 0,
       radius: 8,
-      offset: 24,
+      offset: 20,
       endArrow: {
-        path: 'M 0,0 L 6,4 L 6,-4 Z',
-        d: -1
+        path: 'M 0,0 L 12,6 L 9,0 L 12,-6 Z',
+        fill: '#e5e5e5'
       },
     },
     labelCfg: {
@@ -30,13 +31,73 @@ const flowEdge: CustomEdge = {
         stroke: '#5aaaff',
         shadowColor: '#5aaaff',
         shadowBlur: 24,
+        endArrow: {
+          path: 'M 0,0 L 12,6 L 9,0 L 12,-6 Z',
+          fill: '#5aaaff'
+        }
       },
       [ItemState.HighLight]: {
         stroke: '#5aaaff',
         shadowColor: '#5aaaff',
         shadowBlur: 24,
+        endArrow: {
+          path: 'M 0,0 L 12,6 L 9,0 L 12,-6 Z',
+          fill: '#5aaaff'
+        }
       },
     },
+  },
+
+  getPath(points){
+    const startPoint = points[0];
+    const endPoint = points[1];
+    const arcRatio = 4;
+    const arrowEndSpace = 9;
+    let edgeX = startPoint.x;
+    let edgeY = startPoint.y;
+    let endX = endPoint.x;
+    let endY = endPoint.y;
+    const startControlPoint = [edgeX, edgeY];
+    const endControlPoint = [endX, endY];
+    const startAngel = this.getPointDirect(startPoint);
+    const endAngel = this.getPointDirect(endPoint);
+    const  offsetLength = Math.sqrt(Math.pow(edgeX - endX, 2) + Math.pow(edgeY - endY, 2)) / arcRatio;
+
+    startControlPoint[0] += (1 / startAngel < 0 ? -1 : 1) * Math.cos(startAngel) * offsetLength;
+    startControlPoint[1] += -Math.sin(startAngel) * offsetLength; // svg坐标系倒置需要给y坐标加负号
+
+    endControlPoint[0] += (1 / endAngel < 0 ? -1 : 1) * Math.cos(endAngel) * offsetLength;
+    endControlPoint[1] += -Math.sin(endAngel) * offsetLength; // svg坐标系倒置需要给y坐标加负号
+
+    if(endPoint.index===0){
+      endY -= arrowEndSpace;
+    }else if(endPoint.index === 1){
+      endX += arrowEndSpace;
+    }else if(endPoint.index===2){
+      endY += arrowEndSpace;
+    }else if(endPoint.index===3){
+      endX -= arrowEndSpace;
+    }
+
+    return [
+      ['M', startPoint.x, startPoint.y],
+      ['C', startControlPoint[0], startControlPoint[1],endControlPoint[0],endControlPoint[1], endX, endY],
+      ['L', endPoint.x, endPoint.y]
+    ]
+  },
+
+  getPointDirect(point){
+    let angel = 0;
+    if(point.index===0){
+      angel = Math.PI / 2;
+    }else if(point.index===1){
+      angel = -Math.PI;
+    }else if(point.index===2){
+      angel = -Math.PI / 2;
+    }else if(point.index===3){
+      angel = Math.PI;
+    }
+    return angel || 0;
   },
 
   createLabelWrapper(group: GGroup) {
@@ -127,4 +188,5 @@ const flowEdge: CustomEdge = {
   },
 }
 
-G6.registerEdge('flowEdge', flowEdge, 'polyline');
+// polyline
+G6.registerEdge('flowEdge', flowEdge, 'line');

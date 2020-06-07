@@ -1,6 +1,6 @@
 {
   "name": "vf-editor",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A Flowchart Editor Based On G6",
   "main": "lib/index.js",
   "unpkg": "dist/index.js",
@@ -10,7 +10,7 @@
     "editor",
     "flowchart",
     "g6",
-    "glow",
+    "flow",
     "graph"
   ],
   "homepage": "https://wf-editor.jieee.dev",
@@ -36,12 +36,6 @@
     "pretty-quick": "pretty-quick",
     "deploy": "gh-pages -d site -r git@github.com:lingjieee/wf-editor.git"
   },
-  "sideEffects": [
-    "dist/*",
-    "es/**/style/*",
-    "lib/**/style/*",
-    "*.less"
-  ],
   "peerDependencies": {
     "antd": ">=4.0.0",
     "react": ">=16.9.0",
