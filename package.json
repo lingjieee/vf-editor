@@ -1,6 +1,6 @@
 {
   "name": "vf-editor",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "A Flowchart Editor Based On G6",
   "main": "lib/index.js",
   "unpkg": "dist/index.js",

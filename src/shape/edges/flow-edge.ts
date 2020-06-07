@@ -102,7 +102,7 @@ const flowEdge: CustomEdge = {
     return angel || 0;
   },
 
-  createLabelWrapper(group: GGroup) {
+  createLabelWrapper(group: GGroup, labelName:string) {
     const label = group.findByClassName(EDGE_LABEL_CLASS_NAME);
     const labelWrapper = group.findByClassName(EDGE_LABEL_WRAPPER_CLASS_NAME);
 
@@ -114,6 +114,9 @@ const flowEdge: CustomEdge = {
       return;
     }
 
+    if(!labelName){
+      return;
+    }
     group.addShape('rect', {
       className: EDGE_LABEL_WRAPPER_CLASS_NAME,
       attrs: {
@@ -127,11 +130,10 @@ const flowEdge: CustomEdge = {
     group.sort();
   },
 
-  updateLabelWrapper(group: GGroup) {
+  updateLabelWrapper(group: GGroup, labelName: string) {
     const label = group.findByClassName(EDGE_LABEL_CLASS_NAME);
     const labelWrapper = group.findByClassName(EDGE_LABEL_WRAPPER_CLASS_NAME);
-
-    if (!label) {
+    if (!label || !labelName) {
       labelWrapper && labelWrapper.hide();
       return;
     } else {
@@ -153,15 +155,14 @@ const flowEdge: CustomEdge = {
   },
 
   afterDraw(model, group) {
-    this.createLabelWrapper(group);
-    this.updateLabelWrapper(group);
+    this.createLabelWrapper(group, model.label);
+    this.updateLabelWrapper(group, model.label);
   },
 
   afterUpdate(model, item) {
     const group = item.getContainer();
-
-    this.createLabelWrapper(group);
-    this.updateLabelWrapper(group);
+    this.createLabelWrapper(group, model.label);
+    this.updateLabelWrapper(group, model.label);
   },
 
   setState(name, value, item) {
