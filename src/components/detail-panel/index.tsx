@@ -1,20 +1,24 @@
-import React, {FunctionComponent, useEffect, useState} from 'react';
+import React, {FunctionComponent, useEffect, useReducer, useState} from 'react';
 import {EditorEvent, GraphState} from "@/common/constants";
 import {useEditorContext} from "@/components/context/editor-context";
 import {GraphStateEvent} from "@/common/interface";
 import {getSelectedEdges, getSelectedNodes} from "@/util";
 import {DetailContextProvider, useFlowDetail} from "./context";
 
-interface DetailPanelProps {}
+interface DetailPanelProps {};
 
 const DetailPanel: FunctionComponent<DetailPanelProps> = (props) => {
 
   const [graphState, setGraphState] = useState(GraphState.CanvasSelected);
   let {graph} = useEditorContext();
+  const [count, add] = useReducer((status:number)=>{
+    return status+1;
+  },1);
 
   useEffect(()=>{
     const handler = ({graphState}:GraphStateEvent) => {
-      setGraphState(graphState)
+      setGraphState(graphState);
+      add();
     };
     graph?.on(EditorEvent.onGraphStateChange, handler);
 
@@ -43,7 +47,7 @@ const DetailPanel: FunctionComponent<DetailPanelProps> = (props) => {
   }
 
   return (
-    <DetailContextProvider value={{
+    <DetailContextProvider key={count} value={{
       isEdge,
       isNode,
       isCanvas,
