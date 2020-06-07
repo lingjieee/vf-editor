@@ -1,10 +1,7 @@
 import React, { FunctionComponent } from 'react';
-import Editor, {Flow, EditableLabel, ItemPopover} from 'vf-editor';
+import Editor, {Flow} from 'vf-editor';
 import styles from './index.less';
-
-interface OwnProps {}
-
-type Props = OwnProps;
+import CustomComponent from "./custom-component";
 
 const data = {
   nodes: [
@@ -32,23 +29,16 @@ const data = {
   ],
 };
 
-const Basic: FunctionComponent<Props> = (props) => {
+const App: FunctionComponent = () => {
 
   return (
     <div>
       <Editor>
         <Flow data={data} className={styles.graph}/>
-        <EditableLabel/>
-        <ItemPopover title={()=>"title"} content={(item)=>{
-          return(
-            <div>
-              content
-            </div>
-          )
-        }}/>
+        <CustomComponent/>
       </Editor>
     </div>
   );
 };
 
-export default Basic;
+export default App;

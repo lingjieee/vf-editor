@@ -2,9 +2,9 @@ import { defineConfig } from 'dumi';
 
 export default defineConfig({
     mode: 'site',
-    logo: 'https://cdn-blog.jieee.xyz/img/fe-128.png',
+    logo: 'https://cdn-blog.jieee.xyz/img/vf.png',
     title: 'WF Editor',
-    favicon: 'https://cdn-blog.jieee.xyz/img/fe-24.ico',
+    favicon: 'https://cdn-blog.jieee.xyz/img/vf.png',
     navs: [
         null,
         {

@@ -81,7 +81,7 @@ const Flow: FunctionComponent<FlowProps> = (props) => {
       const behaviors = modes[mode];
       modes[mode] = Object.values(customModes?customModes(mode, behaviors): behaviors);
     })
-    return {
+    return merge({
       defaultNode: {
         type: 'task-node',
       },
@@ -89,7 +89,7 @@ const Flow: FunctionComponent<FlowProps> = (props) => {
         type: 'flowEdge',
       },
       modes
-    }
+    }, props.graphConfig||{})
   },[]);
 
   return (
@@ -97,7 +97,7 @@ const Flow: FunctionComponent<FlowProps> = (props) => {
       data={props.data}
       config={config}
       parseData={parseData}
-      {...omit(props, ['graphConfig','customModes'])}/>
+      {...omit(props, ['customModes'])}/>
   );
 };
 

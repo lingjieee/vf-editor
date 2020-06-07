@@ -20,16 +20,14 @@ const Command: FunctionComponent<CommandProps> = (props) => {
   const [disabled, setDisabled] = useState(false);
   let {graph, executeCommand} = useEditorContext();
   useEffect(()=>{
-    const commandManager: CommandManager = graph.get('commandManager');
-    const stateChangeHandler = () => {
-      setDisabled(!commandManager.canExecute(graph, name))
-    };
     if(graph){
+      const commandManager: CommandManager = graph.get('commandManager');
+      const stateChangeHandler = () => {
+        setDisabled(!commandManager.canExecute(graph, name))
+      };
       setDisabled(!commandManager.canExecute(graph, name));
       graph.on(EditorEvent.onGraphStateChange, stateChangeHandler)
-    }
-    return()=>{
-      if(graph){
+      return()=>{
         graph.off(EditorEvent.onGraphStateChange, stateChangeHandler)
       }
     }

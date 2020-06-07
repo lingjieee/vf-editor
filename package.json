@@ -51,6 +51,7 @@
     "uuid": "^8.1.0"
   },
   "devDependencies": {
+    "@ant-design/icons": "^4.2.1",
     "@babel/cli": "^7.7.5",
     "@babel/core": "^7.7.5",
     "@babel/plugin-transform-runtime": "^7.7.6",

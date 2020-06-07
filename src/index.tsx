@@ -13,6 +13,7 @@ import global from '@/common/global';
 import * as constants from '@/common/constants';
 import CommandManager from '@/common/command-manager';
 import behaviorManager from '@/common/behavior-manager';
+import Command from '@/components/command';
 
 import { setAnchorPointsState } from '@/shape/common/anchor';
 import { baseCommand } from './components/graph/command/base';
@@ -23,6 +24,7 @@ export {
   G6,
   ItemPanel,
   Item,
+  Command,
   EditableLabel,
   ItemPopover,
   DetailPanel,
@@ -37,7 +39,7 @@ export {
   constants,
   CommandManager,
   behaviorManager,
-  setAnchorPointsState
+  setAnchorPointsState,
 }
 
 export default Editor;

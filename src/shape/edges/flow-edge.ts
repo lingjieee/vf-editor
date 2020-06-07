@@ -30,6 +30,7 @@ const flowEdge: CustomEdge = {
       [ItemState.Selected]: {
         stroke: '#5aaaff',
         shadowColor: '#5aaaff',
+        lineAppendWidth: 16,
         shadowBlur: 24,
         endArrow: {
           path: 'M 0,0 L 12,6 L 9,0 L 12,-6 Z',
@@ -39,6 +40,7 @@ const flowEdge: CustomEdge = {
       [ItemState.HighLight]: {
         stroke: '#5aaaff',
         shadowColor: '#5aaaff',
+        lineAppendWidth: 16,
         shadowBlur: 24,
         endArrow: {
           path: 'M 0,0 L 12,6 L 9,0 L 12,-6 Z',
